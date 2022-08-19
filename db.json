@@ -1,0 +1,28 @@
+{
+    "peoples": [
+        {
+          "id": 1,
+          "Name": "Shengzhe",
+          "Surname": "Huang",
+          "First_dose": true,
+          "Second_dose": false,
+          "First_dose_time": "02-19,2022",
+          "Second_dose_time": "",
+          "Comments": "None",
+          "Age": "20",
+          "Home_town": "China"
+        },
+        {
+          "id": 2,
+          "Name": "Shengzhe2",
+          "Surname": "Huang2",
+          "First_dose": true,
+          "Second_dose": false,
+          "First_dose_time": "02-19,2022",
+          "Second_dose_time": "",
+          "Comments": "None",
+          "Age": "20",
+          "Home_town": "China2"
+        }
+      ]
+}

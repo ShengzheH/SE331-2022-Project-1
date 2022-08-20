@@ -4,10 +4,11 @@
     <div class="list-item">
       <ul>
         <li>
-          <div>Name: {{ people.Name }} {{ people.Surname }}</div>
+          <div class="name">{{ people.Name }} {{ people.Surname }}</div>
         </li>
+        <br />
         <li>
-          <div>The status of vaccine</div>
+          <div class="status">The status of vaccine</div>
         </li>
         <li>
           <div class="title">First dose</div>
@@ -60,7 +61,7 @@ export default {
   float: right;
   position: absolute;
   width: 300px;
-  margin: 10px 0 0 80px;
+  margin: 10px 0 0 200px;
 }
 .left-nav {
   float: left;
@@ -69,7 +70,7 @@ export default {
   background-color: #fff;
   padding: 3px;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
-  margin: 0 0 10px;
+  margin: 0 0 10px 100px;
   box-sizing: border-box;
   border-radius: 50%;
 }
@@ -114,5 +115,13 @@ li {
 }
 .value {
   padding-left: 40%;
+}
+.name {
+  color: green;
+  font: bold;
+  font-size: 20px;
+}
+.status {
+  padding-bottom: 8px;
 }
 </style>

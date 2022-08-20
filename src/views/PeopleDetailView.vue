@@ -24,13 +24,22 @@
   </div>
 </template>
 <script>
+import PeopleService from '@/services/PeopleService.js'
 export default {
-  name: 'ListItem',
-  props: {
-    people: {
-      type: Object,
-      required: true
+  data() {
+    return {
+      people: null,
+      id: 2
     }
+  },
+  created() {
+    PeopleService.getPeople(this.id)
+      .then((response) => {
+        this.people = response.data
+      })
+      .catch((error) => {
+        console.error(error)
+      })
   },
   computed: {
     firstdose() {
@@ -53,7 +62,7 @@ export default {
   flex-direction: column;
   padding: 10px;
   width: 500px;
-  height: 150px;
+  height: 200px;
   cursor: pointer;
   border: 3px solid #a6abb1;
   border-radius: 20px;

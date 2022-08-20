@@ -129,7 +129,7 @@ li {
   color: green;
   font: bold;
   font-size: 20px;
-  padding-bottom: 10px;
+  padding-bottom: 0px;
   padding-top: 15px;
 }
 .status {

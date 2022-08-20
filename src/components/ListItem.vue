@@ -6,7 +6,6 @@
         <li>
           <div class="name">{{ people.Name }} {{ people.Surname }}</div>
         </li>
-        <br />
         <li>
           <br />
           <div class="status">The status of vaccine:</div>
@@ -57,8 +56,12 @@ export default {
   height: 150px;
   cursor: pointer;
   border: 3px solid #a6abb1;
+  border-radius: 20px;
   margin-bottom: 18px;
   text-align: center;
+  background-image: url('../assets/card.jpg');
+  background-position: absolute;
+  background-size: 100% 100%;
   /* background-color: blanchedalmond; */
 }
 .list-item {
@@ -67,7 +70,7 @@ export default {
   float: right;
   position: absolute;
   width: 300px;
-  margin: 10px 0 0 200px;
+  margin: 10px 0 0 190px;
 }
 .left-nav {
   float: left;
@@ -76,7 +79,7 @@ export default {
   background-color: #fff;
   padding: 3px;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
-  margin: 0 0 10px 100px;
+  margin: 20px 0 10px 100px;
   box-sizing: border-box;
   border-radius: 50%;
 }
@@ -126,6 +129,8 @@ li {
   color: green;
   font: bold;
   font-size: 20px;
+  padding-bottom: 10px;
+  padding-top: 15px;
 }
 .status {
   padding-bottom: 8px;

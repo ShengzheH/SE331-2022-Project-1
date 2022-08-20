@@ -46,7 +46,7 @@ export default {
   display: flex;
   flex-direction: column;
   padding: 10px;
-  width: 350px;
+  width: 500px;
   height: 150px;
   cursor: pointer;
   border: 3px solid #a6abb1;

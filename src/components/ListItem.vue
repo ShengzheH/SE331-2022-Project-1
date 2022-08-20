@@ -6,6 +6,7 @@
         <li>
           <div class="name">{{ people.Name }} {{ people.Surname }}</div>
         </li>
+        <br />
         <li>
           <br />
           <div class="status">The status of vaccine:</div>
@@ -52,7 +53,7 @@ export default {
   display: flex;
   flex-direction: column;
   padding: 10px;
-  width: 650px;
+  width: 500px;
   height: 150px;
   cursor: pointer;
   border: 3px solid #a6abb1;
@@ -66,7 +67,7 @@ export default {
   float: right;
   position: absolute;
   width: 300px;
-  margin: 10px 0 0 160px;
+  margin: 10px 0 0 200px;
 }
 .left-nav {
   float: left;
@@ -75,7 +76,7 @@ export default {
   background-color: #fff;
   padding: 3px;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
-  margin: 0 0 10px 50px;
+  margin: 0 0 10px 100px;
   box-sizing: border-box;
   border-radius: 50%;
 }
@@ -121,7 +122,12 @@ li {
 .value {
   padding-left: 40%;
 }
+.name {
+  color: green;
+  font: bold;
+  font-size: 20px;
+}
 .status {
-  padding-bottom: 5px;
+  padding-bottom: 8px;
 }
 </style>

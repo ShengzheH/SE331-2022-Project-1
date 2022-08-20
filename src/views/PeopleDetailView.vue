@@ -1,22 +1,27 @@
 <template>
-  <div id="building">
-    <div class="left-nav"><img src="../assets/icon.jpg" /></div>
+  <div id="building" v-if="people">
+    <div class="left-nav"><img :src="imgURL" /></div>
     <div class="list-item">
       <ul>
         <li>
-          <div class="name">{{ people.Name }} {{ people.Surname }}</div>
-        </li>
-        <li>
           <br />
-          <div class="status">The status of vaccine:</div>
+          <div class="title">Name</div>
+          <div class="value">{{ people.Name }}</div>
+          <br />
         </li>
         <li>
-          <div class="title">First dose</div>
-          <div class="value">{{ firstdose(people.First_dose) }}</div>
+          <div class="title">SurName</div>
+          <div class="value">{{ people.Surname }}</div>
+          <br />
         </li>
         <li>
-          <div class="title">Second dose</div>
-          <div class="value">{{ firstdose(people.Second_dose) }}</div>
+          <div class="title">Age</div>
+          <div class="value">{{ people.Age }}</div>
+          <br />
+        </li>
+        <li>
+          <div class="title">Home Town</div>
+          <div class="value">{{ people.Home_town }}</div>
         </li>
       </ul>
       <br />
@@ -26,10 +31,10 @@
 <script>
 import PeopleService from '@/services/PeopleService.js'
 export default {
+  props: ['id'],
   data() {
     return {
-      people: null,
-      id: 2
+      people: null
     }
   },
   created() {
@@ -47,6 +52,9 @@ export default {
         if (dose) return 'Get'
         else return 'Not Yet'
       }
+    },
+    imgURL() {
+      return require('../assets/' + this.people.id + '.jpg')
     }
   }
 }
@@ -123,8 +131,8 @@ li {
 .title {
   position: absolute;
   width: 35%;
-  text-align: justify;
-  text-align-last: justify;
+  text-align: center;
+  text-align-last: center;
 }
 .title:before {
   position: absolute;
@@ -133,6 +141,7 @@ li {
 }
 .value {
   padding-left: 40%;
+  color: green;
 }
 .name {
   color: green;

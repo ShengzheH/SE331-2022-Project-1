@@ -1,31 +1,38 @@
 <template>
-  <div id="building">
-    <div class="left-nav"><img src="../assets/icon.jpg" /></div>
-    <div class="list-item">
-      <ul>
-        <li>
-          <div class="name">{{ people.Name }} {{ people.Surname }}</div>
-        </li>
-        <li>
-          <br />
-          <div class="status">The status of vaccine:</div>
-        </li>
-        <li>
-          <div class="title">First dose</div>
-          <div class="value">{{ firstdose(people.First_dose) }}</div>
-        </li>
-        <li>
-          <div class="title">Second dose</div>
-          <div class="value">{{ firstdose(people.Second_dose) }}</div>
-        </li>
-      </ul>
-      <br />
+  <router-link :to="{ name: 'PeopleDetail', params: { id: people.id } }">
+    <div id="building">
+      <div class="left-nav"><img :src="imgURl" /></div>
+      <div class="list-item">
+        <ul>
+          <li>
+            <div class="name">{{ people.Name }} {{ people.Surname }}</div>
+          </li>
+          <li>
+            <br />
+            <div class="status">The status of vaccine:</div>
+          </li>
+          <li>
+            <div class="title">First dose</div>
+            <div class="value">{{ firstdose(people.First_dose) }}</div>
+          </li>
+          <li>
+            <div class="title">Second dose</div>
+            <div class="value">{{ firstdose(people.Second_dose) }}</div>
+          </li>
+        </ul>
+        <br />
+      </div>
     </div>
-  </div>
+  </router-link>
 </template>
 <script>
 export default {
   name: 'ListItem',
+  data() {
+    return {
+      img: require('../assets/' + this.people.id + '.jpg')
+    }
+  },
   props: {
     people: {
       type: Object,
@@ -35,9 +42,12 @@ export default {
   computed: {
     firstdose() {
       return function (dose) {
-        if (dose) return 'Get'
-        else return 'Not Yet'
+        if (dose) return 'Vaccinated'
+        else return 'Not vaccinated'
       }
+    },
+    imgURl: function () {
+      return this.img
     }
   }
 }

@@ -5,6 +5,29 @@
       <div class="home-list">
         <ListItem v-for="people in peoples" :key="people.id" :people="people" />
       </div>
+      <router-link
+        id="page-prev"
+        :to="{
+          name: 'home',
+          query: { page: page - 1 }
+        }"
+        rel="prev"
+        v-if="page != 1"
+      >
+        Prev Page
+      </router-link>
+      <span>{{ this.page }}</span>
+      <router-link
+        id="page-next"
+        :to="{
+          name: 'home',
+          query: { page: page + 1 }
+        }"
+        rel="next"
+        v-if="hasNextPage"
+      >
+        Next Page
+      </router-link>
     </div>
   </div>
 </template>
@@ -13,20 +36,37 @@
 // @ is an alias to /src
 import ListItem from '@/components/ListItem.vue'
 import PeopleService from '@/services/PeopleService.js'
+import { watchEffect } from '@vue/runtime-core'
 export default {
   name: 'HomeView',
+  props: {
+    page: {
+      type: Number,
+      required: true
+    }
+  },
   components: {
     ListItem
   },
   data() {
     return {
-      peoples: null
+      peoples: null,
+      totalitems: 0
     }
   },
   created() {
-    PeopleService.getPeoples().then((response) => {
-      this.peoples = response.data
+    watchEffect(() => {
+      PeopleService.getPeoples(5, this.page).then((response) => {
+        this.peoples = response.data
+        this.totalitems = response.headers['x-total-count']
+      })
     })
+  },
+  computed: {
+    hasNextPage() {
+      let totalPages = Math.ceil(this.totalitems / 5)
+      return this.page < totalPages
+    }
   }
 }
 </script>
@@ -45,7 +85,24 @@ export default {
   background-repeat: scroll;
   background-size: 100% 100%;
 }
-.body {
-  overflow: auto;
+.pagination {
+  display: flex;
+  width: 290px;
+}
+.pagination a {
+  flex: 1;
+  text-decoration: none;
+  color: #2c3e50;
+}
+#page-prev {
+  text-align: left;
+  margin-right: 100px;
+  padding-bottom: 100px;
+}
+
+#page-next {
+  text-align: right;
+  margin-left: 100px;
+  padding-bottom: 100px;
 }
 </style>

@@ -1,53 +1,60 @@
 <template>
-  <router-link :to="{ name: 'PeopleDetail', params: { id: people.id } }">
-    <div id="building">
-      <div class="left-nav"><img :src="imgURl" /></div>
-      <div class="list-item">
-        <ul>
-          <li>
-            <div class="name">{{ people.Name }} {{ people.Surname }}</div>
-          </li>
-          <li>
-            <br />
-            <div class="status">The status of vaccine:</div>
-          </li>
-          <li>
-            <div class="title">First dose</div>
-            <div class="value">{{ firstdose(people.First_dose) }}</div>
-          </li>
-          <li>
-            <div class="title">Second dose</div>
-            <div class="value">{{ firstdose(people.Second_dose) }}</div>
-          </li>
-        </ul>
-        <br />
-      </div>
+  <div id="building" v-if="people">
+    <div class="left-nav"><img :src="imgURL" /></div>
+    <div class="list-item">
+      <ul>
+        <li>
+          <br />
+          <div class="title">Name</div>
+          <div class="value">{{ people.Name }}</div>
+          <br />
+        </li>
+        <li>
+          <div class="title">SurName</div>
+          <div class="value">{{ people.Surname }}</div>
+          <br />
+        </li>
+        <li>
+          <div class="title">Age</div>
+          <div class="value">{{ people.Age }}</div>
+          <br />
+        </li>
+        <li>
+          <div class="title">Home Town</div>
+          <div class="value">{{ people.Home_town }}</div>
+        </li>
+      </ul>
+      <br />
     </div>
-  </router-link>
+  </div>
 </template>
 <script>
+import PeopleService from '@/services/PeopleService.js'
 export default {
-  name: 'ListItem',
+  props: ['id'],
   data() {
     return {
-      img: require('../assets/' + this.people.id + '.jpg')
+      people: null
     }
   },
-  props: {
-    people: {
-      type: Object,
-      required: true
-    }
+  created() {
+    PeopleService.getPeople(this.id)
+      .then((response) => {
+        this.people = response.data
+      })
+      .catch((error) => {
+        console.error(error)
+      })
   },
   computed: {
     firstdose() {
       return function (dose) {
-        if (dose) return 'Vaccinated'
-        else return 'Not vaccinated'
+        if (dose) return 'Get'
+        else return 'Not Yet'
       }
     },
-    imgURl: function () {
-      return this.img
+    imgURL() {
+      return require('../assets/' + this.people.id + '.jpg')
     }
   }
 }
@@ -63,7 +70,7 @@ export default {
   flex-direction: column;
   padding: 10px;
   width: 500px;
-  height: 150px;
+  height: 200px;
   cursor: pointer;
   border: 3px solid #a6abb1;
   border-radius: 20px;
@@ -124,8 +131,8 @@ li {
 .title {
   position: absolute;
   width: 35%;
-  text-align: justify;
-  text-align-last: justify;
+  text-align: center;
+  text-align-last: center;
 }
 .title:before {
   position: absolute;
@@ -134,6 +141,7 @@ li {
 }
 .value {
   padding-left: 40%;
+  color: green;
 }
 .name {
   color: green;

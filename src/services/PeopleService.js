@@ -10,7 +10,13 @@ const apiClient = axios.create({
 })
 
 export default {
-  getPeoples() {
+  getTotalPeoples() {
     return apiClient.get('/peoples')
+  },
+  getPeople(id) {
+    return apiClient.get('/peoples/' + id)
+  },
+  getPeoples(perPage, page) {
+    return apiClient.get('/peoples?_limit=' + perPage + '&_page=' + page)
   }
 }

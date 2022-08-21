@@ -23,6 +23,16 @@ body {
   border: 0;
 }
 
+body {
+  background: url('./assets/bc.jpg');
+  width: 100%;
+  height: 100%;
+  background-position: absolute;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
 nav {
   padding: 30px;
 }

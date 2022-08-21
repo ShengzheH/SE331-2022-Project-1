@@ -1,30 +1,32 @@
 <template>
-  <div id="building" v-if="people">
-    <div class="left-nav"><img :src="imgURL" /></div>
-    <div class="list-item">
-      <ul>
-        <li>
-          <br />
-          <div class="title">Name</div>
-          <div class="value">{{ people.Name }}</div>
-          <br />
-        </li>
-        <li>
-          <div class="title">SurName</div>
-          <div class="value">{{ people.Surname }}</div>
-          <br />
-        </li>
-        <li>
-          <div class="title">Age</div>
-          <div class="value">{{ people.Age }}</div>
-          <br />
-        </li>
-        <li>
-          <div class="title">Home Town</div>
-          <div class="value">{{ people.Home_town }}</div>
-        </li>
-      </ul>
-      <br />
+  <div class="background">
+    <div id="building" v-if="people">
+      <div class="left-nav"><img :src="imgURL" /></div>
+      <div class="list-item">
+        <ul>
+          <li>
+            <br />
+            <div class="title">Name</div>
+            <div class="value">{{ people.Name }}</div>
+            <br />
+          </li>
+          <li>
+            <div class="title">SurName</div>
+            <div class="value">{{ people.Surname }}</div>
+            <br />
+          </li>
+          <li>
+            <div class="title">Age</div>
+            <div class="value">{{ people.Age }}</div>
+            <br />
+          </li>
+          <li>
+            <div class="title">Home Town</div>
+            <div class="value">{{ people.Home_town }}</div>
+          </li>
+        </ul>
+        <br />
+      </div>
     </div>
   </div>
 </template>
@@ -74,7 +76,7 @@ export default {
   cursor: pointer;
   border: 3px solid #a6abb1;
   border-radius: 20px;
-  margin-bottom: 18px;
+  margin: auto;
   text-align: center;
   background-image: url('../assets/card.jpg');
   background-position: absolute;

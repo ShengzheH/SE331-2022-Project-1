@@ -76,15 +76,7 @@ export default {
   flex-direction: column;
   align-items: center;
 }
-.background {
-  background: url('../assets/bc.jpg');
-  width: 100%;
-  height: 100%;
-  background-position: absolute;
-  background-attachment: fixed;
-  background-repeat: scroll;
-  background-size: 100% 100%;
-}
+
 .pagination {
   display: flex;
   width: 290px;

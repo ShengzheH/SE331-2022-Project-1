@@ -6,7 +6,7 @@
         <ul>
           <li>
             <br />
-            <div>{{ people.Surname }}{{ people.Name }}</div>
+            <div>{{ people.Surname }}1{{ people.Name }}</div>
             <br />
           </li>
           <li>

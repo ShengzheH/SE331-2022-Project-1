@@ -2,8 +2,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import AboutView from '../views/AboutView.vue'
 import PeopleDetailView from '../views/PeopleDetailView.vue'
+import PeopleVaccineDetailView from '../views/PeopleVaccineDetailView'
 import VaccineDetailView from '../views/VaccineDetailView.vue'
-
+import LayoutView from '../views/LayoutView.vue'
 const routes = [
   {
     path: '/',
@@ -20,9 +21,23 @@ const routes = [
   },
   {
     path: '/people/:id',
-    name: 'PeopleDetail',
-    component: PeopleDetailView,
-    props: true
+    name: 'Layout',
+    component: LayoutView,
+    props: true,
+    children: [
+      {
+        path: '',
+        name: 'PeopleDetail',
+        component: PeopleDetailView,
+        props: true
+      },
+      {
+        path: '',
+        name: 'PeopleVaccineDetail',
+        component: PeopleVaccineDetailView,
+        props: true
+      }
+    ]
   },
   {
     path: '/vaccine',

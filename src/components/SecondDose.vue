@@ -9,7 +9,7 @@
           </li>
           <li>
             <br />
-            <div class="status">The status of vaccine:</div>
+            <div class="status">The status of vaccined:</div>
           </li>
           <li>
             <div class="title">First dose</div>

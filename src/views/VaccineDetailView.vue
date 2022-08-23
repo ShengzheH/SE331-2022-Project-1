@@ -1,10 +1,11 @@
 <template>
   <div class="background">
     <div class="home">
-      <h1>
-        People who have been vaccinated with the defferent doses{{ getValue }}
-      </h1>
-      <h2>First dose : {{ this.first_dose }}</h2>
+      <h1>People who have been vaccinated with the defferent doses</h1>
+      <h2>
+        Number of people vaccinated with first dose vaccine :
+        {{ this.first_dose }}
+      </h2>
       <div class="home-list">
         <FirstDose
           v-for="people in peoples"
@@ -12,7 +13,10 @@
           :people="people"
         />
       </div>
-      <h2>Second dose : {{ this.second_dose }}</h2>
+      <h2>
+        Number of people vaccinated with second dose vaccine :
+        {{ this.second_dose }}
+      </h2>
       <div class="home-list">
         <SecondDose
           v-for="people in peoples"
@@ -40,29 +44,24 @@ export default {
     return {
       peoples: null,
       first_dose: 0,
-      second_dose: 0
+      second_dose: 0,
+      length: 0
     }
   },
   created() {
     watchEffect(() => {
-      PeopleService.getPeoples().then((response) => {
+      PeopleService.getTotalPeoples().then((response) => {
         this.peoples = response.data
-      })
-    })
-  },
-  computed: {
-    getValue: {
-      set: function () {
         for (let i = 0; i < this.peoples.length; i++) {
-          if (this.peoples[i].first_dose == true) {
+          if (this.peoples[i].First_dose == true) {
             this.first_dose = this.first_dose + 1
           }
-          if (this.peoples[i].second_dose == true) {
+          if (this.peoples[i].Second_dose == true) {
             this.second_dose = this.second_dose + 1
           }
         }
-      }
-    }
+      })
+    })
   }
 }
 </script>

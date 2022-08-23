@@ -40,9 +40,10 @@ const routes = [
     ]
   },
   {
-    path: '/vaccine',
+    path: '',
     name: 'VaccineDetail',
-    component: VaccineDetailView
+    component: VaccineDetailView,
+    props: true
   }
 ]
 

@@ -34,11 +34,29 @@
         </ul>
       </div>
     </div>
+    <button @click="vaccine">hhh</button>
   </div>
 </template>
 <script>
 export default {
-  props: ['people'],
+  props: ['id', 'people'],
+  inject: ['GStore'],
+  methods: {
+    vaccine() {
+      this.GStore.flashMessage =
+        'You are successfully return to ' +
+        this.people.Name +
+        ' ' +
+        this.people.Surname
+      setTimeout(() => {
+        this.GStore.flashMessage = ''
+      }, 3000)
+      this.$router.push({
+        name: 'PeopleDetail',
+        params: { id: this.people.id }
+      })
+    }
+  },
   computed: {
     firstdose() {
       return function (dose) {

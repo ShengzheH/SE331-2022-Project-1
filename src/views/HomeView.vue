@@ -36,7 +36,6 @@
 // @ is an alias to /src
 import ListItem from '@/components/ListItem.vue'
 import PeopleService from '@/services/PeopleService.js'
-import { watchEffect } from '@vue/runtime-core'
 export default {
   name: 'HomeView',
   props: {
@@ -54,13 +53,30 @@ export default {
       totalitems: 0
     }
   },
-  created() {
-    watchEffect(() => {
-      PeopleService.getPeoples(5, this.page).then((response) => {
+  // eslint-disable-next-line no-unused-vars
+  beforeRouteEnter(routeTo, routeFrom, next) {
+    PeopleService.getPeoples(5, parseInt(routeTo.query.page) || 1)
+      .then((response) => {
+        next((comp) => {
+          comp.peoples = response.data
+          comp.totalitems = response.headers['x-total-count']
+        })
+      })
+      .catch(() => {
+        next({ name: 'NetworkError' })
+      })
+  },
+  // eslint-disable-next-line no-unused-vars
+  beforeRouteUpdate(routeTo, routeFrom, next) {
+    PeopleService.getPeoples(5, parseInt(routeTo.query.page) || 1)
+      .then((response) => {
         this.peoples = response.data
         this.totalitems = response.headers['x-total-count']
+        next()
       })
-    })
+      .catch(() => {
+        next({ name: 'NetworkError' })
+      })
   },
   computed: {
     hasNextPage() {

@@ -1,6 +1,6 @@
 <template>
   <div class="background">
-    <div id="building" v-if="people">
+    <div id="building">
       <div class="left-nav"><img :src="imgURL" /></div>
       <div class="list-item">
         <ul>
@@ -31,30 +31,9 @@
   </div>
 </template>
 <script>
-import PeopleService from '@/services/PeopleService.js'
 export default {
-  props: ['id'],
-  data() {
-    return {
-      people: null
-    }
-  },
-  created() {
-    PeopleService.getPeople(this.id)
-      .then((response) => {
-        this.people = response.data
-      })
-      .catch((error) => {
-        console.error(error)
-      })
-  },
+  props: ['people'],
   computed: {
-    firstdose() {
-      return function (dose) {
-        if (dose) return 'Get'
-        else return 'Not Yet'
-      }
-    },
     imgURL() {
       return require('../assets/' + this.people.id + '.jpg')
     }

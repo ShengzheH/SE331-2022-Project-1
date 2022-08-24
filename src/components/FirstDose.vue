@@ -1,6 +1,6 @@
 <template>
   <router-link :to="{ name: 'PeopleDetail', params: { id: people.id } }">
-    <div id="building">
+    <div id="building" v-if="people.First_dose">
       <div class="left-nav"><img :src="imgURl" /></div>
       <div class="list-item">
         <ul>

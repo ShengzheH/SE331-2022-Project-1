@@ -1,0 +1,6 @@
+version: "3.9"
+services:
+  web:
+    image: "13819773795/se331-2022-project:latest"
+    ports:
+      - 8001:80

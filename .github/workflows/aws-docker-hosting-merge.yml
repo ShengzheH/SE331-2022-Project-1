@@ -1,0 +1,38 @@
+name: Deploy to Aws Socker on merge
+'on':
+  push:
+    branches:
+      - prod-docker
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v2
+      -
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+      -
+        name: Set up Docker Buildx
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_TOKEN }}
+      - 
+        name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: true
+          tags: 13819773795/se331-2022-project:latest
+      -
+        name: docker compose
+        uses: alex-ac/github-action-ssh-docker-compose@master
+        with:
+          ssh_host: ${{ secrets.HOST_SERVER }}
+          ssh_private_key: ${{ secrets.HOST_SSH_PRIVATE_KEY }}
+          ssh_user: ${{ secrets.HOST_USER_NAME }}
+          docker_compose_prefix: vue-331
+          docker_compose_filename: "./docker-compose.yml"

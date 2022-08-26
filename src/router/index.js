@@ -10,6 +10,7 @@ import NetWorkErrorView from '../views/NetworkErrorView.vue'
 import PeopleService from '../services/PeopleService.js'
 import NProgress from 'nprogress'
 import GStore from '@/store'
+import DoctorCommentView from '../views/DoctorCommentView.vue'
 const routes = [
   {
     path: '/',
@@ -57,11 +58,16 @@ const routes = [
         name: 'PeopleVaccineDetail',
         component: PeopleVaccineDetailView,
         props: true
+      },
+      {
+        path: '',
+        name: 'DoctorComment',
+        component: DoctorCommentView
       }
     ]
   },
   {
-    path: '',
+    path: '/',
     name: 'VaccineDetail',
     component: VaccineDetailView,
     props: true

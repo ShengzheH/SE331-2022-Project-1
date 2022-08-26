@@ -4,9 +4,9 @@
   </div>
   <div>
     <nav>
-      <router-link :to="{ name: 'home' }">Home</router-link> |
+      <router-link :to="{ name: 'home' }"> Home</router-link> |
       <router-link :to="{ name: 'VaccineDetail' }">Vaccine</router-link> |
-      <router-link :to="{ name: 'about' }">About</router-link>
+      <router-link :to="{ name: 'about' }">About us</router-link>
     </nav>
     <router-view />
   </div>

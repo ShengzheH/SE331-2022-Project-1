@@ -10,7 +10,7 @@
 ### Deploy URL(AWS machine's ip will change, so some url may can't open nomally)
 ```
 1.http://54.164.89.123:8001/
-2.firebase is same project:  se331-2022-project-1-72e40.web.app
+2.firebase is same project:  https://se331-2022-project-1-72e40.firebaseapp.com/
 
 ```
 
